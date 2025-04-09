@@ -26,7 +26,7 @@ def addMovieReview(review:Review):
 
 
 
-def start_server():
+def startServer():
     # print('Starting Server...')
 
     uvicorn.run(
@@ -37,4 +37,4 @@ def start_server():
 
 
 if __name__ == "__main__":
-    start_server()
+    startServer()
