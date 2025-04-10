@@ -3,6 +3,7 @@ from uuid import UUID
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 from typing import *
 from  cohere_lib import *
 
@@ -12,6 +13,14 @@ class Review(BaseModel):
     review: str
 
 review_list = []
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or use ["*"] to allow all origins (not safe for production)
+    allow_credentials=True,
+    allow_methods=["*"],    # GET, POST, etc.
+    allow_headers=["*"],
+)
 
 @app.get("/showMovieReviews")
 def showReview():
